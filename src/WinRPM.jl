@@ -49,7 +49,7 @@ end
 if is_unix()
     function download(source::AbstractString)
         x = HTTPC.get(source)
-        unsafe_string(x.body), x.http_code
+        x.body.data, x.http_code
     end
 elseif is_windows()
     function download(source::AbstractString; retry=5)
